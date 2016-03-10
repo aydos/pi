@@ -5,41 +5,73 @@
 	<title></title>
 </head>
 <body>
-<select id="method">
+<select id="s">
 	<option value="pi_viete">François Viète (1593)</option>
 	<option value="pi_euler_2">Leonard Euler 2</option>
 	<option value="pi_euler_3">Leonard Euler 3</option>
 	<option value="pi_euler_4">Leonard Euler 4</option>
 </select>
-<div id="iter"></div><br/>
-<div id="match"></div><br/>
-<div id="pi"></div><br/>
-<button onclick="calculate()">Calculate</button>
+<select id="pr">
+	<option value="100">100</option>
+	<option value="200">200</option>
+	<option value="300">300</option>
+	<option value="400">400</option>
+	<option value="500">500</option>
+	<option value="600">600</option>
+	<option value="700">700</option>
+	<option value="800">800</option>
+	<option value="900">900</option>
+	<option value="1000">1000</option>
+</select>
+<select id="ic">
+	<option value="1000">1000</option>
+	<option value="10000">10000</option>
+	<option value="100000">100000</option>
+	<option value="1000000">1000000</option>
+</select>
+<div id="i"></div><br/>
+<div id="k"></div><br/>
+<div id="p"></div><br/>
+<button id="cb" onclick="calculate()">Calculate</button>
 <script type="text/javascript">
 var piWorker
 var calculating = false
-var e = document.getElementById("method");
-var i = document.getElementById("iter");
-var k = document.getElementById("match");
-var p = document.getElementById("pi");
+var se = document.getElementById("s");
+var pre = document.getElementById("pr");
+var ice = document.getElementById("ic");
+var cbe = document.getElementById("cb");
+var i = document.getElementById("i");
+var k = document.getElementById("k");
+var p = document.getElementById("p");
 function calculate() {
 	if (calculating) {
 		piWorker.terminate();
 		calculating = false
+		cbe.textContent = "Calculate"
 		return
 	}
+	cbe.textContent = "Stop"
 	i.innerHTML = "0"
 	k.innerHTML = "0"
 	p.innerHTML = "0"
 	calculating = true
 	piWorker = new Worker("pi.js")
-	var m = e.options[e.selectedIndex].value;
-	var msg = {method:m,prec:100}
+	var s = se.options[se.selectedIndex].value;
+	var pr = pre.options[pre.selectedIndex].value;
+	var ic = ice.options[ice.selectedIndex].value;
+	var msg = {s:s,pr:pr,ic:ic}
 	piWorker.postMessage(msg)
 	piWorker.onmessage = function(e) {
+		console.log(e.data.k, pr, ic)
 		i.innerHTML = e.data.i
 		k.innerHTML = e.data.k
 		p.innerHTML = e.data.p
+		if ((e.data.k==pr)||(e.data.i==ic) ){
+			piWorker.terminate();
+			calculating = false
+			cbe.textContent = "Calculate"
+			return
+		}
 	}
 }
 </script>
