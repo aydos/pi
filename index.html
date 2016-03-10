@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<select id="method">
+	<option value="pi_viete">François Viète (1593)</option>
+	<option value="pi_euler_2">Leonard Euler 2</option>
+	<option value="pi_euler_3">Leonard Euler 3</option>
+	<option value="pi_euler_4">Leonard Euler 4</option>
+</select>
+<div id="iter"></div><br/>
+<div id="match"></div><br/>
+<div id="pi"></div><br/>
+<button onclick="calculate()">Calculate</button>
+<script type="text/javascript">
+var piWorker
+var calculating = false
+var e = document.getElementById("method");
+var i = document.getElementById("iter");
+var k = document.getElementById("match");
+var p = document.getElementById("pi");
+function calculate() {
+	if (calculating) {
+		piWorker.terminate();
+		calculating = false
+		return
+	}
+	i.innerHTML = "0"
+	k.innerHTML = "0"
+	p.innerHTML = "0"
+	calculating = true
+	piWorker = new Worker("pi.js")
+	var m = e.options[e.selectedIndex].value;
+	var msg = {method:m,prec:100}
+	piWorker.postMessage(msg)
+	piWorker.onmessage = function(e) {
+		i.innerHTML = e.data.i
+		k.innerHTML = e.data.k
+		p.innerHTML = e.data.p
+	}
+}
+</script>
+</body>
+</html>
