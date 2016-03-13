@@ -1,19 +1,14 @@
-// 2016-03-10 - Fahri Aydos - aydos.com
-var nt = new Decimal(0)
-var it = new Decimal(0)
-var half = new Decimal(1).div(2)
+// Fahri Aydos - aydos.com (2016-03-10)
+// 1593 - François Viète (1540-1603)
+// https://en.wikipedia.org/wiki/Vi%C3%A8te's_formula
+var n = new Decimal(1)
+var t = new Decimal(0)
 var two = new Decimal(2)
-var hsq = half.sqrt()
-function pi_series() {
-	if (it.equals(1)) {
-		nt = hsq
-	} else {
-		hsq = hsq.times(half).plus(half).sqrt()
-		nt = nt.times(hsq)
-	}
+function pi_step() {
+	t = t.plus(2).sqrt()
+	n = n.times(t.div(2))
 }
-function pi_calculate() {
-	it = it.plus(1)
-	pi_series()
-	pi = two.div(nt)
+function pi_calc() {
+	pi_step()
+	pi = two.div(n)
 }

@@ -1,78 +1,166 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title></title>
+<meta charset="utf-8">
+<title>Pi Series - aydos.com/pi</title>
+<style type="text/css">
+body{background-color:#2A4943;}
+#content{margin:0 auto;width:768px;background-color:white;text-align:center}
+div{box-sizing:border-box;padding: 10px}
+.seri{margin:0;float:left;width:40%;display:inline-block;}
+.dcml{margin:0;float:left;width:20%;display:inline-block;}
+.iter{margin:0;float:left;width:20%;display:inline-block;}
+.slow{margin:0;float:left;width:20%;display:inline-block;}
+#seri{width:100%}
+#dcml{width:100%}
+#iter{width:100%}
+#slow{width:100%}
+.curi{margin:0;float:left;width:50%;display:inline-block;}
+.mdec{margin:0;float:left;width:50%;display:inline-block;}
+.calp{margin:0;float:left;width:100%;display:inline-block;}
+#p{font-family:Courier New}
+.big{font-size:2em}
+.red{color:#f00}
+</style>
 </head>
 <body>
-<select id="s">
-	<option value="pi_viete">François Viète (1593)</option>
-	<option value="pi_euler_2">Leonard Euler 2</option>
-	<option value="pi_euler_3">Leonard Euler 3</option>
-	<option value="pi_euler_4">Leonard Euler 4</option>
+<div id="content">
+<h1>Pi Series</h1>
+<h2>Calculate Pi using infinite series</h2>
+<h3><a href="https://aydos.com/pi">aydos.com/pi</a></h3>
+<div class="seri">
+Serie of<br />
+<select id="seri">
+<option value="pi_madhava_1">Madhava of Sangamagrama 1 (#1)</option>
+<option value="pi_madhava_2">Madhava of Sangamagrama 2</option>
+<option value="pi_viete">François Viète</option>
+<option value="pi_gregory">James Gregory (#1)</option>
+<option value="pi_leibniz">Gottfried Wilhelm Leibniz (#1)</option>
+<option value="pi_wallis_1">John Wallis 1</option>
+<option value="pi_wallis_2">John Wallis 2</option>
+<option value="pi_brouncker_1">William Brouncker 1 - other 4</option>
+<option value="pi_brouncker_2">William Brouncker 2 - other 5</option>
+<option value="pi_newton">Isaac Newton</option>
+<option value="pi_euler_1">Leonard Euler 1</option>
+<option value="pi_euler_2">Leonard Euler 2</option>
+<option value="pi_euler_3">Leonard Euler 3</option>
+<option value="pi_euler_4">Leonard Euler 4</option>
+<option value="pi_yonder_1">Taner Yönder 1</option>
+<option value="pi_yonder_2">Taner Yönder 2</option>
+<option value="pi_other_3">Other 3</option>
 </select>
-<select id="pr">
-	<option value="100">100</option>
-	<option value="200">200</option>
-	<option value="300">300</option>
-	<option value="400">400</option>
-	<option value="500">500</option>
-	<option value="600">600</option>
-	<option value="700">700</option>
-	<option value="800">800</option>
-	<option value="900">900</option>
-	<option value="1000">1000</option>
-</select>
-<select id="ic">
-	<option value="1000">1000</option>
-	<option value="10000">10000</option>
-	<option value="100000">100000</option>
-	<option value="1000000">1000000</option>
-</select>
-<div id="i"></div><br/>
-<div id="k"></div><br/>
-<div id="p"></div><br/>
-<button id="cb" onclick="calculate()">Calculate</button>
+</div>
+<div class="dcml">Decimal of pi<br /><select id="dcml"></select></div>
+<div class="iter">Maximum iteration<br /><select id="iter"></select></div>
+<div class="slow">Slow down in ms<br /><select id="slow"></select></div>
+<div class="curi">Current iteration<br/><span id="i">0</span></div>
+<div class="mdec">Matched decimals<br/><span id="k">0</span></div>
+<div class="calp">Calculated pi<br/><span id="p"><span class="big">0.</span></div>
+<button id="btn" onclick="calculate()" disabled="disabled">Calculate</button>
+<div class="notes">
+<h3>Notes</h3>
+<ul>
+<li>#1 : Madhava's, Gregory's and Leibniz's series are same</li>
+<li>#2 : These series require calculate the primes numbers first</li>
+</ul>
+<h3>Thanks to</h3>
+<ul>
+<li>All mathematicians whom give us these beautiful formulas.</li>
+<li>Michael Mclaughlin for <a href="https://github.com/MikeMcl/decimal.js/">decimal.js</a>.</li>
+<li>Contributors of this project (only me for now)</li>
+<li>All pi lovers</li>
+</ul>
+<h3>Licence</h3>
+MIT licence as long as aydos.com/pi credited.<br />
+No credit needed for educational usages.
+</div>
 <script type="text/javascript">
-var piWorker
-var calculating = false
-var se = document.getElementById("s");
-var pre = document.getElementById("pr");
-var ice = document.getElementById("ic");
-var cbe = document.getElementById("cb");
-var i = document.getElementById("i");
-var k = document.getElementById("k");
-var p = document.getElementById("p");
+var piWorker, calculating
+var $seri, $dcml, $iter, $slow, $btn
+var $i, $k, $p
+window.onload = function(e){
+	$seri = document.getElementById("seri")
+	$dcml = document.getElementById("dcml")
+	$iter = document.getElementById("iter")
+	$slow = document.getElementById("slow")
+	$btn = document.getElementById("btn")
+	$i = document.getElementById("i")
+	$k = document.getElementById("k")
+	$p = document.getElementById("p")
+	for (var i=100;i<=1000;i+=100) {
+		var opt=document.createElement("option")
+		opt.value=i
+		opt.innerHTML=i
+		$dcml.appendChild(opt)
+	}
+	for (var i=1000;i<=1000000;i*=10) {
+		var opt=document.createElement("option")
+		opt.value=i
+		opt.innerHTML=i
+		$iter.appendChild(opt)
+	}
+	for (var i=0;i<=200;i++) {
+		var opt=document.createElement("option")
+		opt.value=i
+		opt.innerHTML=i
+		$slow.appendChild(opt)
+	}
+	calculating = false
+	$btn.disabled= ""
+}
 function calculate() {
 	if (calculating) {
 		piWorker.terminate();
 		calculating = false
-		cbe.textContent = "Calculate"
+		$btn.textContent = "Calculate"
 		return
 	}
-	cbe.textContent = "Stop"
-	i.innerHTML = "0"
-	k.innerHTML = "0"
-	p.innerHTML = "0"
-	calculating = true
+	displayPi(0, 0, 0)
 	piWorker = new Worker("pi.js")
-	var s = se.options[se.selectedIndex].value;
-	var pr = pre.options[pre.selectedIndex].value;
-	var ic = ice.options[ice.selectedIndex].value;
-	var msg = {s:s,pr:pr,ic:ic}
-	piWorker.postMessage(msg)
+	var se = $seri.options[$seri.selectedIndex].value
+	var dc = $dcml.options[$dcml.selectedIndex].value
+	var it = $iter.options[$iter.selectedIndex].value
+	var sl = $slow.options[$slow.selectedIndex].value
+	var pr = 0
+	if ((se == "pi_euler_1")||(se == "pi_euler_6")) {
+		pr = 1
+	}
+	if ((pr==1) && (it>10000)) {
+		alert("Calculating "+ it + " primes will take long... Please choose a smaller iteration.")
+		return
+	}
+	calculating = true
+	$btn.textContent = "Stop"
+	piWorker.postMessage({se:se,dc:dc,it:it,sl:sl,pr:pr})
 	piWorker.onmessage = function(e) {
-		console.log(e.data.k, pr, ic)
-		i.innerHTML = e.data.i
-		k.innerHTML = e.data.k
-		p.innerHTML = e.data.p
-		if ((e.data.k==pr)||(e.data.i==ic) ){
+		displayPi(e.data.p, e.data.i, e.data.k, dc)
+		if ((e.data.k==dc)||(e.data.i==it) ){
 			piWorker.terminate();
 			calculating = false
-			cbe.textContent = "Calculate"
+			$btn.textContent = "Calculate"
 			return
 		}
 	}
+}
+function displayPi(p, i, k, dc){
+	p = p.toString()
+	$i.innerHTML = i
+	$k.innerHTML = k
+	var pos = p.indexOf(".")
+	var s = "<span class='big'>" + p.substr(0, pos+1) + "</span><br />"
+	p = p.substr(pos+1)
+	var ind = 0
+	s += "<span class='red'>"
+	for (var i=0;i<dc;i++) {
+		if (i==k) {
+			s += "</span>"
+		}
+		if (i%50==0) {
+			s += "<br />"
+		}
+		s += p[i]===undefined? 0 : p[i]
+	}
+	$p.innerHTML = s
 }
 </script>
 </body>
