@@ -1,2 +1,2 @@
 # Pi Series
-Calculate Pi with infinate series
+Calculate Pi with infinite series
