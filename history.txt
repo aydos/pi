@@ -1,7 +1,0 @@
-
-2016-03-10
-	javascript ile yazılmaya başlandı
-	git init
-
-2016-03-13
-	proje github'a konmaya hazır
