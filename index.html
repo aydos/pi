@@ -5,7 +5,7 @@
 <title>Pi Series - aydos.com/pi</title>
 <style type="text/css">
 body{background-color:#2A4943;}
-#content{margin:0 auto;width:768px;background-color:white;text-align:center}
+#pibody{margin:0 auto;width:768px;background-color:white;text-align:center}
 div{box-sizing:border-box;padding: 10px}
 .seri{margin:0;float:left;width:40%;display:inline-block;}
 .dcml{margin:0;float:left;width:20%;display:inline-block;}
@@ -18,50 +18,50 @@ div{box-sizing:border-box;padding: 10px}
 .curi{margin:0;float:left;width:50%;display:inline-block;}
 .mdec{margin:0;float:left;width:50%;display:inline-block;}
 .calp{margin:0;float:left;width:100%;display:inline-block;}
-#p{font-family:Courier New}
-.big{font-size:2em}
+#p{font-family:Courier New;color:#999}
+.big{font-size:2em;color:black;}
 .red{color:#f00}
 </style>
 </head>
 <body>
-<div id="content">
-<h1>Pi Series</h1>
+<div id="pibody">
+<h1>π - Pi Series</h1>
 <h2>Calculate Pi using infinite series</h2>
 <h3><a href="https://aydos.com/pi">aydos.com/pi</a></h3>
 <div class="seri">
 Serie of<br />
 <select id="seri">
-<option value="pi_madhava_1">Madhava of Sangamagrama 1 (#1)</option>
+<option value="pi_madhava_1">Madhava of Sangamagrama 1 (¹)</option>
 <option value="pi_madhava_2">Madhava of Sangamagrama 2</option>
 <option value="pi_viete">François Viète</option>
-<option value="pi_gregory">James Gregory (#1)</option>
-<option value="pi_leibniz">Gottfried Wilhelm Leibniz (#1)</option>
-<option value="pi_wallis_1">John Wallis 1</option>
-<option value="pi_wallis_2">John Wallis 2</option>
-<option value="pi_brouncker_1">William Brouncker 1 - other 4</option>
-<option value="pi_brouncker_2">William Brouncker 2 - other 5</option>
+<option value="pi_gregory">James Gregory (¹)</option>
+<option value="pi_leibniz">Gottfried Wilhelm Leibniz (¹)</option>
+<option value="pi_wallis">John Wallis</option>
+<option value="pi_brouncker_1">William Brouncker 1</option>
+<option value="pi_brouncker_2">William Brouncker 2</option>
 <option value="pi_newton">Isaac Newton</option>
-<option value="pi_euler_1">Leonard Euler 1</option>
-<option value="pi_euler_2">Leonard Euler 2</option>
-<option value="pi_euler_3">Leonard Euler 3</option>
-<option value="pi_euler_4">Leonard Euler 4</option>
+<option value="pi_euler_1">Leonhard Euler 1 (²)</option>
+<option value="pi_euler_2">Leonhard Euler 2</option>
+<option value="pi_euler_3">Leonhard Euler 3</option>
+<option value="pi_euler_4">Leonhard Euler 4</option>
 <option value="pi_yonder_1">Taner Yönder 1</option>
 <option value="pi_yonder_2">Taner Yönder 2</option>
 <option value="pi_other_3">Other 3</option>
 </select>
 </div>
-<div class="dcml">Decimal of pi<br /><select id="dcml"></select></div>
+<div class="dcml">Decimals of pi<br /><select id="dcml"></select></div>
 <div class="iter">Maximum iteration<br /><select id="iter"></select></div>
 <div class="slow">Slow down in ms<br /><select id="slow"></select></div>
 <div class="curi">Current iteration<br/><span id="i">0</span></div>
 <div class="mdec">Matched decimals<br/><span id="k">0</span></div>
+<button id="btn" onclick="calculate()" disabled="disabled">Calculate</button><br/>
 <div class="calp">Calculated pi<br/><span id="p"><span class="big">0.</span></div>
-<button id="btn" onclick="calculate()" disabled="disabled">Calculate</button>
+Real pi may be different to this calculated pi.
 <div class="notes">
 <h3>Notes</h3>
 <ul>
-<li>#1 : Madhava's, Gregory's and Leibniz's series are same</li>
-<li>#2 : These series require calculate the primes numbers first</li>
+<li>(¹) Madhava's, Gregory's and Leibniz's series are same.</li>
+<li>(²) These series require calculate the primes numbers first. So first step will be slow.</li>
 </ul>
 <h3>Thanks to</h3>
 <ul>
@@ -147,7 +147,7 @@ function displayPi(p, i, k, dc){
 	$i.innerHTML = i
 	$k.innerHTML = k
 	var pos = p.indexOf(".")
-	var s = "<span class='big'>" + p.substr(0, pos+1) + "</span><br />"
+	var s = "<span class='big'>" + p.substr(0, pos+1) + "</span>"
 	p = p.substr(pos+1)
 	var ind = 0
 	s += "<span class='red'>"
