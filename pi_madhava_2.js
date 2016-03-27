@@ -16,3 +16,6 @@ function pi_calc() {
 	pi_step()
 	pi = n.times(twq)
 }
+function pi_math() {
+	return "\\frac{\\pi}{\\sqrt{12}}=1-\\frac{1}{3\\times 3^1}+\\frac{1}{5\\times 3^2}-\\frac{1}{7\\times 3^3}+\\frac{1}{9\\times 3^4}-\\frac{1}{11\\times 3^5}+\\cdots"
+}

@@ -12,3 +12,6 @@ function pi_calc() {
 	pi_step()
 	pi = two.div(n)
 }
+function pi_math() {
+	return "\\frac{2}{\\pi}=\\frac{\\sqrt{2}}{2}\\times\\frac{\\sqrt{2+\\sqrt{2}}}{2}\\times\\frac{\\sqrt{2+\\sqrt{2+\\sqrt{2}}}}{2}\\cdots"
+}

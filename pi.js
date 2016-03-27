@@ -46,9 +46,9 @@ function pi_compare(p) {
 	}
 	return i
 }
-function primes(it) {
+function primes(n) {
 	var i = pr[pr.length-1]
-	while(pr.length<it) {
+	while(pr.length<n) {
 		i+=2
 		var q = Math.floor(Math.sqrt(i))
 		for (var j=0;j<pr.length;j++) {

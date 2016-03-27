@@ -14,15 +14,6 @@ function pi_calc() {
 	pi_step()
 	pi = n.times(2)
 }
-/*
-var n = new Decimal(1)
-var one = new Decimal(1)
-var two = new Decimal(2)
-function pi_step() {
-	var k = new Decimal(i*2)
-	n = n.times(one.minus(one.div(k.times(k))))
+function pi_math() {
+	return "\\frac{\\pi}{2}=\\frac{2\\times 2}{1\\times 3}\\times\\frac{4\\times 4}{3\\times 5}\\times\\frac{6\\times 6}{5\\times 7}\\times\\cdots"
 }
-function pi_calc() {
-	pi_step()
-	pi = two.div(n)
-} */

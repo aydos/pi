@@ -11,3 +11,6 @@ function pi_calc() {
 	pi_step()
 	pi = n.times(8).sqrt()
 }
+function pi_math() {
+	return "\\frac{\\pi^2}{8}=\\frac{1}{1^2}+\\frac{1}{3^2}+\\frac{1}{5^2}+\\frac{1}{7^2}+\\frac{1}{9^2}+\\cdots"
+}

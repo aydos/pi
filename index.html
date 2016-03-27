@@ -3,65 +3,70 @@
 <head>
 <meta charset="utf-8">
 <title>Pi Series - aydos.com/pi</title>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <style type="text/css">
-body{background-color:#2A4943;}
-#pibody{margin:0 auto;width:768px;background-color:white;text-align:center}
-div{box-sizing:border-box;padding: 10px}
-.seri{margin:0;float:left;width:40%;display:inline-block;}
-.dcml{margin:0;float:left;width:20%;display:inline-block;}
-.iter{margin:0;float:left;width:20%;display:inline-block;}
-.slow{margin:0;float:left;width:20%;display:inline-block;}
-#seri{width:100%}
-#dcml{width:100%}
-#iter{width:100%}
-#slow{width:100%}
-.curi{margin:0;float:left;width:50%;display:inline-block;}
-.mdec{margin:0;float:left;width:50%;display:inline-block;}
-.calp{margin:0;float:left;width:100%;display:inline-block;}
-#p{font-family:Courier New;color:#999}
-.big{font-size:2em;color:black;}
+body{background-color:#34495e;}
+#pibody{margin:0 auto;width:768px;max-width:768px;background-color:white;padding:10px 40px 40px 40px;}
+/*.content{margin:0 auto;width:600px;background-color:#adbfd2;padding:36px 24px;}
+#canvas{display:none;position:absolute;top:0;left:0;}*/
+table{width:100%;padding:10px;}
+td{padding:4px 8px;}
+#pi{font-family:Courier New;color:#999;word-break:break-all;}
+#math{text-align:center;}
 .red{color:#f00}
 </style>
 </head>
 <body>
 <div id="pibody">
+<center>
 <h1>π - Pi Series</h1>
 <h2>Calculate Pi using infinite series</h2>
 <h3><a href="https://aydos.com/pi">aydos.com/pi</a></h3>
-<div class="seri">
-Serie of<br />
-<select id="seri">
-<option value="pi_madhava_1">Madhava of Sangamagrama 1 (¹)</option>
-<option value="pi_madhava_2">Madhava of Sangamagrama 2</option>
-<option value="pi_viete">François Viète</option>
-<option value="pi_gregory">James Gregory (¹)</option>
-<option value="pi_leibniz">Gottfried Wilhelm Leibniz (¹)</option>
-<option value="pi_wallis">John Wallis</option>
-<option value="pi_brouncker_1">William Brouncker 1</option>
-<option value="pi_brouncker_2">William Brouncker 2</option>
-<option value="pi_newton">Isaac Newton</option>
-<option value="pi_euler_1">Leonhard Euler 1 (²)</option>
-<option value="pi_euler_2">Leonhard Euler 2</option>
-<option value="pi_euler_3">Leonhard Euler 3</option>
-<option value="pi_euler_4">Leonhard Euler 4</option>
-<option value="pi_yonder_1">Taner Yönder 1</option>
-<option value="pi_yonder_2">Taner Yönder 2</option>
-<option value="pi_other_3">Other 3</option>
-</select>
-</div>
-<div class="dcml">Decimals of pi<br /><select id="dcml"></select></div>
-<div class="iter">Maximum iteration<br /><select id="iter"></select></div>
-<div class="slow">Slow down in ms<br /><select id="slow"></select></div>
-<div class="curi">Current iteration<br/><span id="i">0</span></div>
-<div class="mdec">Matched decimals<br/><span id="k">0</span></div>
-<button id="btn" onclick="calculate()" disabled="disabled">Calculate</button><br/>
-<div class="calp">Calculated pi<br/><span id="p"><span class="big">0.</span></div>
-Real pi may be different to this calculated pi.
+</center>
+<table>
+<tr>
+	<td align="right" width="40%">Serie of</td>
+	<td>
+		<select id="seri">
+		<option value="pi_madhava_1">Madhava of Sangamagrama 1 (¹)</option>
+		<option value="pi_madhava_2">Madhava of Sangamagrama 2</option>
+		<option value="pi_viete">François Viète</option>
+		<option value="pi_gregory">James Gregory (¹)</option>
+		<option value="pi_leibniz">Gottfried Wilhelm Leibniz (¹)</option>
+		<option value="pi_wallis">John Wallis</option>
+		<option value="pi_brouncker_1">William Brouncker 1 (³)</option>
+		<option value="pi_brouncker_2">William Brouncker 2 (³)</option>
+		<option value="pi_newton">Isaac Newton</option>
+		<option value="pi_nilakantha">Nilakantha Somayaji</option>
+		<option value="pi_euler_1">Leonhard Euler 1 (²)</option>
+		<option value="pi_euler_2">Leonhard Euler 2</option>
+		<option value="pi_euler_3">Leonhard Euler 3</option>
+		<option value="pi_euler_4">Leonhard Euler 4</option>
+		<option value="pi_euler_6">Leonhard Euler 6 (²)</option>
+		<option value="pi_yonder">Taner Yönder</option>
+		<option value="pi_unknown_1">Unknown 1</option>
+		</select>
+	</td>
+</tr>
+<tr><td colspan="2"><div id="mj"></div></td></tr>
+<tr><td align="right">Decimals of pi</td><td><select id="dcml"></select></td></tr>
+<tr><td align="right">Maximum iteration</td><td><select id="iter"></select></td></tr>
+<tr><td align="right">Slow down in ms</td><td><select id="slow"></select></td></tr>
+<tr>
+	<td align="right"></td>
+	<td><button id="btn" onclick="calculate()" disabled="disabled">Calculate</button></td>
+</tr>
+<tr><td align="right">Current iteration</td><td id="curi"></td></tr>
+<tr><td align="right">Matched decimals</td><td id="mdec"></td></tr>
+<tr><td colspan="2"><div id="pi"></div></td></tr>
+</table>
+<br/>
 <div class="notes">
 <h3>Notes</h3>
 <ul>
 <li>(¹) Madhava's, Gregory's and Leibniz's series are same.</li>
 <li>(²) These series require calculate the primes numbers first. So first step will be slow.</li>
+<li>(³) Not sure about these formulas belogn to Brouncker</li>
 </ul>
 <h3>Thanks to</h3>
 <ul>
@@ -83,10 +88,11 @@ window.onload = function(e){
 	$dcml = document.getElementById("dcml")
 	$iter = document.getElementById("iter")
 	$slow = document.getElementById("slow")
+	$curi = document.getElementById("curi")
+	$mdec = document.getElementById("mdec")
+	$pi = document.getElementById("pi")
+	$mj = document.getElementById("mj")
 	$btn = document.getElementById("btn")
-	$i = document.getElementById("i")
-	$k = document.getElementById("k")
-	$p = document.getElementById("p")
 	for (var i=100;i<=1000;i+=100) {
 		var opt=document.createElement("option")
 		opt.value=i
@@ -107,6 +113,9 @@ window.onload = function(e){
 	}
 	calculating = false
 	$btn.disabled= ""
+	$seri.addEventListener("change",onchangeSeri,false)
+	onchangeSeri()
+	displayPi(0, 0, 0)
 }
 function calculate() {
 	if (calculating) {
@@ -117,10 +126,10 @@ function calculate() {
 	}
 	displayPi(0, 0, 0)
 	piWorker = new Worker("pi.js")
-	var se = $seri.options[$seri.selectedIndex].value
-	var dc = $dcml.options[$dcml.selectedIndex].value
-	var it = $iter.options[$iter.selectedIndex].value
-	var sl = $slow.options[$slow.selectedIndex].value
+	var se = $seri.value
+	var dc = $dcml.value
+	var it = $iter.value
+	var sl = $slow.value
 	var pr = 0
 	if ((se == "pi_euler_1")||(se == "pi_euler_6")) {
 		pr = 1
@@ -144,10 +153,11 @@ function calculate() {
 }
 function displayPi(p, i, k, dc){
 	p = p.toString()
-	$i.innerHTML = i
-	$k.innerHTML = k
+	$curi.innerHTML = i
+	$mdec.innerHTML = k
 	var pos = p.indexOf(".")
 	var s = "<span class='big'>" + p.substr(0, pos+1) + "</span>"
+	s = p.substr(0,pos+1)
 	p = p.substr(pos+1)
 	var ind = 0
 	s += "<span class='red'>"
@@ -155,12 +165,19 @@ function displayPi(p, i, k, dc){
 		if (i==k) {
 			s += "</span>"
 		}
-		if (i%50==0) {
-			s += "<br />"
-		}
 		s += p[i]===undefined? 0 : p[i]
 	}
-	$p.innerHTML = s
+	$pi.innerHTML = s
+}
+function onchangeSeri() {
+	$mj.innerHTML = ""
+	mjWorker = new Worker("mj.js")
+	mjWorker.postMessage({se:$seri.value})
+	mjWorker.onmessage = function(e) {
+		$mj.innerHTML = "$$" + e.data.mj + "$$"
+		mjWorker.terminate()
+		MathJax.Hub.Queue(["Typeset",MathJax.Hub,$mj])
+	}
 }
 </script>
 </body>

@@ -9,3 +9,6 @@ function pi_calc() {
 	pi_step()
 	pi = n.times(6).sqrt()
 }
+function pi_math() {
+	return "\\frac{\\pi^2}{6}=\\frac{1}{1^2}+\\frac{1}{2^2}+\\frac{1}{3^2}+\\frac{1}{4^2}+\\frac{1}{5^2}+\\frac{1}{6^2}+\\cdots"
+}

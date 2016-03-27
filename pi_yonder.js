@@ -3,12 +3,14 @@
 var n = new Decimal(0)
 var one = new Decimal(1)
 var two = new Decimal(2)
-var k = 0
 function pi_step() {
-	k = (2*i)-1
+	var k = (2*i)-1
 	n = n.plus(one.div(two.times(k).pow(2).minus(1)))
 }
 function pi_calc() {
 	pi_step()
 	pi = n.times(8)
+}
+function pi_math() {
+	return "\\frac{\\pi}{8}=\\frac{1}{(2\\times 1)^2-1}+\\frac{1}{(2\\times 3)^2-1}+\\frac{1}{(2\\times 5)^2-1}+\\cdots"
 }

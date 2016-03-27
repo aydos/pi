@@ -12,3 +12,6 @@ function pi_calc() {
 	pi_step()
 	pi = n.times(90).pow(onefourth)
 }
+function pi_math() {
+	return "\\frac{\\pi^4}{90}=\\frac{1}{1^4}+\\frac{1}{2^4}+\\frac{1}{3^4}+\\frac{1}{4^4}+\\frac{1}{5^4}+\\frac{1}{6^4}+\\cdots"
+}

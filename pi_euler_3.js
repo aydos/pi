@@ -16,3 +16,6 @@ function pi_calc() {
 	pi_step()
 	pi = n.times(32).pow(onethird)
 }
+function pi_math() {
+	return "\\frac{\\pi^3}{32}=\\frac{1}{1^3}-\\frac{1}{3^3}+\\frac{1}{5^3}-\\frac{1}{7^3}+\\frac{1}{9^3}-\\frac{1}{11^3}+\\cdots"
+}

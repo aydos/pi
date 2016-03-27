@@ -13,3 +13,6 @@ function pi_calc() {
 	pi_step()
 	pi = n.times(4)
 }
+function pi_math() {
+	return "\\frac{\\pi}{4}=\\frac{3}{4}\\times\\frac{5}{4}\\times\\frac{7}{8}\\times\\frac{11}{12}\\times\\frac{13}{12}\\times\\frac{17}{16}\\times\\cdots"
+}

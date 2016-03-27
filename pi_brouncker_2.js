@@ -11,3 +11,6 @@ function pi_calc() {
 	pi_step()
 	pi = n.times(24).sqrt()
 }
+function pi_math() {
+	return "\\frac{\\pi^2}{24}=\\frac{1}{2^2}+\\frac{1}{4^2}+\\frac{1}{6^2}+\\frac{1}{8^2}+\\frac{1}{10^2}+\\cdots"
+}
