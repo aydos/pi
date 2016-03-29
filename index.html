@@ -13,7 +13,8 @@ table{width:100%;padding:10px;}
 td{padding:4px 8px;}
 #pi{font-family:Courier New;color:#999;word-break:break-all;}
 #math{text-align:center;}
-.red{color:#f00}
+.red{color:#f00;font-weight:bold}
+.big{color:#000;font-size:1.6em;font-weight:bold}
 </style>
 </head>
 <body>
@@ -78,8 +79,7 @@ td{padding:4px 8px;}
 <li>All pi lovers</li>
 </ul>
 <h3>Licence</h3>
-MIT licence as long as aydos.com/pi credited.<br />
-No credit needed for educational usages.
+MIT licence as long as aydos.com/pi credited.
 </div>
 <script type="text/javascript">
 var piWorker, calculating
@@ -159,7 +159,7 @@ function displayPi(p, i, k, dc){
 	$mdec.innerHTML = k
 	var pos = p.indexOf(".")
 	var s = "<span class='big'>" + p.substr(0, pos+1) + "</span>"
-	s = p.substr(0,pos+1)
+	//s = p.substr(0,pos+1)
 	p = p.substr(pos+1)
 	var ind = 0
 	s += "<span class='red'>"
