@@ -1,5 +1,5 @@
 // Fahri Aydos - aydos.com (2016-03-11)
-// Unknown 1
+// Unknown
 var n = new Decimal(0)
 var d = new Decimal(1)
 var one = new Decimal(1)

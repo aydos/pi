@@ -1,27 +1,15 @@
 // Fahri Aydos - aydos.com (2016-03-11)
-// Other
-var nt = new Decimal(0)
-var it = new Decimal(0)
+// Unknown
+var n = new Decimal(0)
 var one = new Decimal(1)
-var up = new Decimal(0)
-var dw = new Decimal(3)
-var mt = new Decimal(1).div(3)
 function pi_step() {
-	if (it.equals(1)) {
-		nt = one
-	} else if (it.equals(2)) {
-		nt = one.plus(mt)
-	} else {
-		up = up.plus(2)
-		dw = dw.plus(2)
-		mt = mt.times(up.div(dw))
-		nt = nt.plus(mt)
-	}
-	console.log(it.toNumber(), up.toNumber(), dw.toNumber(), mt.toString())
-	console.log(nt.toString())
+	var m = new Decimal((2*i)-1)
+	n = n.plus(one.div(m.times(m)))
 }
-function pi_calculate() {
-	it = it.plus(1)
+function pi_calc() {
 	pi_step()
-	pi = nt.times(2)
+	pi = n.times(8).sqrt()
+}
+function pi_math() {
+	return "\\frac{\\pi^2}{8}=\\frac{1}{1^2}+\\frac{1}{3^2}+\\frac{1}{5^2}+\\frac{1}{7^2}+\\frac{1}{9^2}+\\cdots"
 }

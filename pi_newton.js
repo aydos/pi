@@ -21,5 +21,5 @@ function pi_calc() {
 	pi = n.times(6)
 }
 function pi_math() {
-	return "\\frac{\\pi}{6}=\\frac{1}{2}+\\Bigl(\\frac{1}{2}\\times\\frac{1}{3\\times 2^3}\\Bigr)+\\Bigl(\\frac{1\\times 3}{2\\times 4}\\times\\frac{1}{5\\times 2^5}\\Bigr)+\\Bigl(\\frac{1\\times 3\\times 5}{2\\times 4\\times 6}\\times\\frac{1}{7\\times 2^7}\\Bigr)+\\cdots"
+	return "\\frac{\\pi}{6}=\\frac{1}{2}+\\Bigl(\\frac{1}{2}\\times\\frac{1}{3\\times2^3}\\Bigr)+\\Bigl(\\frac{1\\times3}{2\\times4}\\times\\frac{1}{5\\times2^5}\\Bigr)+\\Bigl(\\frac{1\\times3\\times5}{2\\times4\\times6}\\times\\frac{1}{7\\times2^7}\\Bigr)+\\cdots"
 }

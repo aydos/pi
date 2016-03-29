@@ -15,5 +15,5 @@ function pi_calc() {
 	pi = n.times(2)
 }
 function pi_math() {
-	return "\\frac{\\pi}{2}=\\frac{2\\times 2}{1\\times 3}\\times\\frac{4\\times 4}{3\\times 5}\\times\\frac{6\\times 6}{5\\times 7}\\times\\cdots"
+	return "\\frac{\\pi}{2}=\\frac{2\\times2}{1\\times3}\\times\\frac{4\\times4}{3\\times5}\\times\\frac{6\\times6}{5\\times7}\\times\\cdots"
 }

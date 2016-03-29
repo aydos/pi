@@ -12,5 +12,5 @@ function pi_calc() {
 	pi = n.times(8)
 }
 function pi_math() {
-	return "\\frac{\\pi}{8}=\\frac{1}{(2\\times 1)^2-1}+\\frac{1}{(2\\times 3)^2-1}+\\frac{1}{(2\\times 5)^2-1}+\\cdots"
+	return "\\frac{\\pi}{8}=\\frac{1}{(2\\times1)^2-1}+\\frac{1}{(2\\times3)^2-1}+\\frac{1}{(2\\times5)^2-1}+\\cdots"
 }

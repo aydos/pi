@@ -19,7 +19,6 @@ var x = 9007199254740992;
 
 
 // to display mathematical formula
-//http://mathjax.github.io/MathJax-RespEq/Semantics-Lab/walker/?1;100;HTML-CSS;complexity;false;syntactic;none;blue;black;pi%20/%204%20%3D%201%20-1/3%20+%201/5
 function pi_math() {
 	return "\\pi=3.14159\\cdots"
 }
