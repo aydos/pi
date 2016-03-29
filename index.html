@@ -173,7 +173,7 @@ function displayPi(p, i, k, dc){
 }
 function onchangeSeri() {
 	$mj.innerHTML = ""
-	mjWorker = new Worker("mj.js")
+	var mjWorker = new Worker("mj.js")
 	mjWorker.postMessage({se:$seri.value})
 	mjWorker.onmessage = function(e) {
 		$mj.innerHTML = "$$" + e.data.mj + "$$"
