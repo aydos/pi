@@ -1,18 +1,14 @@
-// Fahri Aydos - aydos.com (2016-03-13)
-// Leonard Euler
-// https://en.wikipedia.org/wiki/Euler_product
-var n = new Decimal(1)
+// Fahri Aydos - aydos.com (2016-03-10)
+// 1748 - Leonhard Euler (1707-1783)
+var n = new Decimal(0)
+var one = new Decimal(1)
 function pi_step() {
-	var p = pr[i] // begin with 3
-	var u = new Decimal(p)
-	var d = (p-1)%4==0 ? (p-1) : (p+1)
-	var m = new Decimal(u.div(d))
-	n = n.times(m)
+	n = n.plus(one.div(i*i))
 }
 function pi_calc() {
 	pi_step()
-	pi = n.times(4)
+	pi = n.times(6).sqrt()
 }
 function pi_math() {
-	return "\\frac{\\pi}{4}=\\frac{3}{4}\\times\\frac{5}{4}\\times\\frac{7}{8}\\times\\frac{11}{12}\\times\\frac{13}{12}\\times\\frac{17}{16}\\times\\cdots"
+	return "\\frac{\\pi^2}{6}=\\frac{1}{1^2}+\\frac{1}{2^2}+\\frac{1}{3^2}+\\frac{1}{4^2}+\\frac{1}{5^2}+\\frac{1}{6^2}+\\cdots"
 }
