@@ -14,7 +14,7 @@ See online version at:
 ## Thanks to
 
 * All mathematicians whom give us these beautiful formulas.
-* Michael Mclaughlin [decimal.js](https://github.com/MikeMcl/decimal.js/).
+* Michael Mclaughlin for [decimal.js](https://github.com/MikeMcl/decimal.js/).
 * Contributors of this project (only me for now)
 * All pi lovers
 
