@@ -1,6 +1,7 @@
 # pi series
 Calculate pi decimals with infinite series
 
+See online version at:
 ## https://aydos.com/pi
 
 # Usage
@@ -12,10 +13,10 @@ Calculate pi decimals with infinite series
 
 ## Thanks to
 
-All mathematicians whom give us these beautiful formulas.
-Michael Mclaughlin [decimal.js](https://github.com/MikeMcl/decimal.js/).
-Contributors of this project (only me for now)
-All pi lovers
+* All mathematicians whom give us these beautiful formulas.
+* Michael Mclaughlin [decimal.js](https://github.com/MikeMcl/decimal.js/).
+* Contributors of this project (only me for now)
+* All pi lovers
 
 ## Licence
 MIT licence as long as aydos.com/pi credited. 
